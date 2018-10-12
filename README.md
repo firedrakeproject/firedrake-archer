@@ -7,25 +7,24 @@ The build process will only work correctly on the /home filesystem. However this
 The build process is set out in detail in the following steps:
 
 1.	Make a new directory on Archer to use for building Firedrake. This can be called anything you like but it needs to be somewhere in your home directory. For the purposes of these instructions we will assume the directory is `${HOME}/firedrake`:
-    ```
+    ```bash
     cd ~
     mkdir firedrake
     cd firedrake
-    ``` 
 2.  Clone this repository:
-    ```
+    ```bash
     git clone https://github.com/firedrakeproject/firedrake-archer.git
     ```
 3.  Build Python:
-    ```
+    ```bash
     bash firedrake-archer/build_python3.7_archer.sh
     ```
 4.  Build Firedrake using the specialised Archer install script. Additional arguments to `firedrake-install` can be passed to this script. For example, to install Firedrake with Gusto you would type:
-    ```
+    ```bash
     bash firedrake-archer/install_firedrake_archer.sh
     ```
 5.  Copy the installation to the /work filesystem. For example if your directory on /work is called /work/proj/proj/username then run:
-    ```
+    ```bash
     cd /work/proj/proj/username
     rsync -avx ${HOME}/firedrake
     ```
