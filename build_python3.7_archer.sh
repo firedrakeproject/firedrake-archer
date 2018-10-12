@@ -2,9 +2,9 @@
 
 # Script for building Python on Archer based on instructions at 
 # https://github.com/ARCHER-CSE/build-instructions/blob/master/Python/build_python_3.6.0_gcc6_ivybrg.md
-# The script needs to have Python-3.x.x.tgz already present in the directory it is run from
 # D. Acreman, September 2018
 # Updated to handle uncompressed Python tar file (3/10/18)
+# Updated to download Python (12/10/18 D. Ham)
 
 set -eu
 
@@ -29,6 +29,9 @@ if [[ -e libffi-3.2.1 ]]; then
     echo "libffi-3.2.1 already exists. Aborting ..."
     exit 1
 fi
+
+echo "Downloading Python ${version_num}"
+curl -O https://www.python.org/ftp/python/${version_num}/Python-${version_num}.tgz
 
 if [[ -e Python-${version_num}.tgz ]]; then
     echo "Unpacking Python distribution"
