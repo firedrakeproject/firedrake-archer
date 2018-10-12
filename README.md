@@ -2,7 +2,7 @@
 
 Building Firedrake requires a Python installation with a working pip. The Python versions available as modules on Archer do not have a working pip so you will need to build your own Python distribution before building Firedrake.
 
-The build process will only work correctly on the /home filesystem. However this filesytem is not mounted on the compute nodes so we will build in /home and then copy the installation to /work.
+The build process will only work correctly on the `/home` filesystem. However this filesytem is not mounted on the compute nodes so we will build in `/home` and then copy the installation to `/work`.
 
 The build process is set out in detail in the following steps:
 
@@ -23,10 +23,10 @@ The build process is set out in detail in the following steps:
     ```bash
     bash firedrake-archer/install_firedrake_archer.sh --install gusto
     ```
-5.  Copy the installation to the /work filesystem. For example if your directory on /work is called /work/proj/proj/username then run:
+5.  Copy the installation to the `/work` filesystem:
     ```bash
-    cd /work/proj/proj/username
+    cd ${work}
     rsync -avx ${HOME}/firedrake
     ```
 
-You will need a job script to submit a job to the queue, which can be based on the example submit_firedrake_archer.sh. You will need to edit the script to specify the location of your Firedrake build, the name of the Python script you want to run and your project code.
+You will need a job script to submit a job to the queue, which can be based on the example `submit_firedrake_archer.sh`. You will need to edit the script to specify the location of your Firedrake build, the name of the Python script you want to run and your project code.
