@@ -21,7 +21,7 @@ The build process is set out in detail in the following steps:
     ```
 4.  Build Firedrake using the specialised Archer install script. Additional arguments to `firedrake-install` can be passed to this script. For example, to install Firedrake with Gusto you would type:
     ```bash
-    bash firedrake-archer/install_firedrake_archer.sh
+    bash firedrake-archer/install_firedrake_archer.sh --install gusto
     ```
 5.  Copy the installation to the /work filesystem. For example if your directory on /work is called /work/proj/proj/username then run:
     ```bash
