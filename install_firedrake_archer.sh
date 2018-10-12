@@ -27,9 +27,13 @@ export CRAYPE_LINK_TYPE=dynamic
 # Set compiler for PyOP2
 export CC=cc
 
+# Pick up HDF5 and netCDF libraries from the PETSc build
+export    HDF5_DIR=${PWD}/firedrake/lib/python3.7/site-packages/petsc
+export NETCDF4_DIR=${PWD}/firedrake/lib/python3.7/site-packages/petsc
+
 echo "Fetching install script"
 curl -O https://raw.githubusercontent.com/firedrakeproject/firedrake/master/scripts/firedrake-install
 echo "Installing"
-python3 firedrake-install --disable-ssh --verbose --no-package-manager --show-petsc-configure-options --mpicc=cc --mpicxx=CC --mpif90=ftn
+python3 firedrake-install --disable-ssh --verbose --no-package-manager --show-petsc-configure-options --mpicc=cc --mpicxx=CC --mpif90=ftn $@
 
 echo "Done"
