@@ -19,7 +19,9 @@ export LDFLAGS="-Wl,-rpath,${python_install_dir}/lib"
 unset PYTHONPATH
 
 # Set PETSc options
-export PETSC_CONFIGURE_OPTIONS='-with-cc=cc -with-cxx=CC  --with-fc=ftn --download-fblaslapack=1 --with-make-np=8 --download-pnetcdf --download-pnetcdf-configure-arguments=\"MPICC=cc\"'
+export PETSC_CONFIGURE_OPTIONS='-with-cc=cc -with-cxx=CC --download-fblaslapack=1 --with-make-np=8 --download-pnetcdf --download-pnetcdf-configure-arguments=\"MPICC=cc\"'
+
+export MPIF90=ftn
 
 # Allow dynamically linked executables to be built
 export CRAYPE_LINK_TYPE=dynamic
@@ -34,6 +36,6 @@ export NETCDF4_DIR=${PWD}/firedrake/lib/python3.7/site-packages/petsc
 echo "Fetching install script"
 curl -O https://raw.githubusercontent.com/firedrakeproject/firedrake/master/scripts/firedrake-install
 echo "Installing"
-python3 firedrake-install --verbose --no-package-manager --show-petsc-configure-options --mpicc=cc --mpicxx=CC --mpif90=ftn $@
+python3 firedrake-install --verbose --no-package-manager --show-petsc-configure-options --mpicc=cc --mpicxx=CC --mpif90=ftn --mpiexec=aprun $@
 
 echo "Done"
