@@ -37,4 +37,6 @@ The build process is set out in detail in the following steps:
     ```
 where `${work}` is a directory on the `/work` filesystem.
 
+If you need to update Firedrake then you need to repeat step 5 again (but it won't take as long as rsync will only replace files that have changed).
+
 You will need a job script to submit a job to the queue, which can be based on the example `submit_firedrake_archer.sh`. You will need to edit the script to specify the location of your Firedrake build, the name of the Python script you want to run and your project code.
