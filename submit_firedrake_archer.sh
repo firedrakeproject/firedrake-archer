@@ -4,12 +4,14 @@
 #PBS -l walltime=01:00:00
 #PBS -A YOUR-PROJECT-CODE
 
-# The directory on /work which contains your firedrake installation
-myFiredrake=/work/proj/proj/username/firedrake
+# The directory which contains your firedrake installation
+myFiredrake=/home/n02/n02/dma003/firedrake
 # The script you want to run
 myScript=script.py
 # The number of processors to use
 nprocs=24
+# Your work directory
+work=/work/n02/n02/dma003
 
 # The following lines should not require modification ####### 
 
@@ -47,17 +49,16 @@ echo "Activating Firedrake virtual environment"
 export MPICH_GNI_FORK_MODE=FULLCOPY
 
 # Set cache directories to locations writable from compute nodes
-export PYOP2_CACHE_DIR=${myFiredrake}/pyop2cache
-export FIREDRAKE_TSFC_KERNEL_CACHE_DIR=${myFiredrake}/firedrake-kernel-cache
+export PYOP2_CACHE_DIR=${work}/.caches/pyop2cache
+export FIREDRAKE_TSFC_KERNEL_CACHE_DIR=${work}/.caches/firedrake-kernel-cache
+export XDG_CACHE_HOME=${work}/.caches/xdg-cache
 
 # Make cache directories if they do not exist already
-if [[ ! -e ${myFiredrake}/pyop2cache ]]; then
-    mkdir ${myFiredrake}/pyop2cache
-fi
-
-if [[ ! -e ${myFiredrake}/firedrake-kernel-cache ]]; then
-    mkdir ${myFiredrake}/firedrake-kernel-cache
-fi
+for cache_dir in ${PYOP2_CACHE_DIR} ${FIREDRAKE_TSFC_KERNEL_CACHE_DIR} ${XDG_CACHE_HOME} ; do
+    if [[ ! -e ${cache_dir} ]]; then
+	mkdir -p ${cache_dir}
+    fi
+done
 
 # Run Firedrake
 aprun -b -n ${nprocs} python ${myScript}
