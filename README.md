@@ -31,4 +31,4 @@ The build process is set out in detail in the following steps:
     bash firedrake-archer/install_firedrake_archer.sh --install gusto
     ```
 
-You will need a job script to submit a job to the queue, which can be based on the example `submit_firedrake_archer.sh`. You will need to edit the script to specify your project code, the location of your Firedrake build, the name of the Python script you want to run, and your `\work` directory. 
+You will need a job script to submit a job to the queue, which can be based on the example `submit_firedrake_archer.sh`. You will need to edit the script to specify your project code, the location of your Firedrake build, the name of the Python script you want to run, and your `/work` directory. 
