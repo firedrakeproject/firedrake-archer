@@ -5,13 +5,13 @@
 #PBS -A YOUR-PROJECT-CODE
 
 # The directory which contains your firedrake installation
-myFiredrake=/home/n02/n02/dma003/firedrake
+myFiredrake=/home/PROJECT/PROJECT/USERNAME/firedrake
 # The script you want to run
 myScript=script.py
 # The number of processors to use
 nprocs=24
 # Your work directory
-work=/work/n02/n02/dma003
+work=/work/PROJECT/PROJECT/USERNAME
 
 # The following lines should not require modification ####### 
 
